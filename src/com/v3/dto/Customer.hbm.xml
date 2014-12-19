@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Customer" table="customer" catalog="v3_inventory">
+        <id name="idCustomer" type="java.lang.Integer">
+            <column name="id_customer" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="address" class="com.v3.products.dto.Address" fetch="select">
+            <column name="id_address" not-null="true" />
+        </many-to-one>
+        <property name="buyerName" type="string">
+            <column name="buyer_name" length="45" />
+        </property>
+        <property name="buyerEmail" type="string">
+            <column name="buyer_email" length="45" />
+        </property>
+        <property name="shippingName" type="string">
+            <column name="shipping_name" length="45" />
+        </property>
+        <property name="shippingPhone" type="string">
+            <column name="shipping_phone" length="45" />
+        </property>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_customer" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Channels" table="channels" catalog="v3_inventory">
+        <id name="idChannel" type="java.lang.Integer">
+            <column name="id_channel" />
+            <generator class="identity" />
+        </id>
+        <property name="channel" type="string">
+            <column name="channel" length="45" />
+        </property>
+        <set name="orders" table="order" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_channel" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

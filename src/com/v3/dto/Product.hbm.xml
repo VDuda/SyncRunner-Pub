@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Product" table="product" catalog="v3_inventory">
+        <id name="idProduct" type="java.lang.Integer">
+            <column name="id_product" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="lot" class="com.v3.products.dto.Lot" fetch="select">
+            <column name="id_lot" not-null="true" />
+        </many-to-one>
+        <many-to-one name="shoe" class="com.v3.products.dto.Shoe" fetch="select">
+            <column name="upc" length="12" not-null="false" />
+            <column name="id_style" not-null="false" />
+            <column name="id_brand" not-null="false" />
+        </many-to-one>
+        <property name="binRack" type="string">
+            <column name="bin_rack" length="45" />
+        </property>
+        <property name="timeIn" type="timestamp">
+            <column name="time_in" length="19" not-null="true" />
+        </property>
+        <property name="inBin" type="boolean">
+            <column name="in_bin" not-null="true" />
+        </property>
+        <property name="inStock" type="boolean">
+            <column name="in_stock" not-null="true" />
+        </property>
+        <set name="productLogs" table="product_log" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_product" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.ProductLog" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 10, 2014 6:31:40 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Sku" table="sku" catalog="v3_inventory">
+        <composite-id name="id" class="com.v3.products.dto.SkuId">
+            <key-property name="idStyle" type="int">
+                <column name="id_style" />
+            </key-property>
+            <key-property name="idBrand" type="int">
+                <column name="id_brand" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="category" class="com.v3.products.dto.Category" fetch="select">
+            <column name="category" />
+        </many-to-one>
+        <many-to-one name="style" class="com.v3.products.dto.Style" update="false" insert="false" fetch="select">
+            <column name="id_style" not-null="true" />
+        </many-to-one>
+        <many-to-one name="material" class="com.v3.products.dto.Material" fetch="select">
+            <column name="material" />
+        </many-to-one>
+        <many-to-one name="brand" class="com.v3.products.dto.Brand" update="false" insert="false" fetch="select">
+            <column name="id_brand" not-null="true" />
+        </many-to-one>
+        <property name="features" type="string">
+            <column name="features" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" length="16777215" />
+        </property>
+        <set name="shoes" table="shoe" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_style" not-null="true" />
+                <column name="id_brand" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.Shoe" />
+        </set>
+        <set name="linkedSkus" table="linked_sku" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_style" not-null="true" />
+                <column name="id_brand" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.LinkedSku" />
+        </set>
+    </class>
+</hibernate-mapping>

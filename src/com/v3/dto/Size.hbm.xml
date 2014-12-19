@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Size" table="size" catalog="v3_inventory">
+        <id name="idSize" type="java.lang.Byte">
+            <column name="id_size" />
+            <generator class="identity" />
+        </id>
+        <property name="size" type="string">
+            <column name="size" length="45" />
+        </property>
+        <set name="sizeMaps" table="size_map" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_size" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.SizeMap" />
+        </set>
+    </class>
+</hibernate-mapping>

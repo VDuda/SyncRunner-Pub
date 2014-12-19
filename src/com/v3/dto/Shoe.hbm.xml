@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Shoe" table="shoe" catalog="v3_inventory">
+        <composite-id name="id" class="com.v3.products.dto.ShoeId">
+            <key-property name="upc" type="string">
+                <column name="upc" length="12" />
+            </key-property>
+            <key-property name="idStyle" type="int">
+                <column name="id_style" />
+            </key-property>
+            <key-property name="idBrand" type="int">
+                <column name="id_brand" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="sku" class="com.v3.products.dto.Sku" update="false" insert="false" fetch="select">
+            <column name="id_style" not-null="true" unique="true" />
+            <column name="id_brand" not-null="true" unique="true" />
+        </many-to-one>
+        <many-to-one name="sizeMap" class="com.v3.products.dto.SizeMap" fetch="select">
+            <column name="id_size_map" />
+        </many-to-one>
+        <many-to-one name="colorMap" class="com.v3.products.dto.ColorMap" fetch="select">
+            <column name="id_color_map" />
+        </many-to-one>
+        <many-to-one name="images" class="com.v3.products.dto.Images" fetch="select">
+            <column name="id_img" />
+        </many-to-one>
+        <many-to-one name="gender" class="com.v3.products.dto.Gender" fetch="select">
+            <column name="id_gender" />
+        </many-to-one>
+        <property name="title" type="string">
+            <column name="title" length="80" />
+        </property>
+		<property name="onAmazon" type="boolean">
+            <column name="onAmazon" not-null="true" />
+        </property>
+        <property name="asin" type="string">
+            <column name="asin" length="20" />
+        </property>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="upc" length="12" not-null="true" />
+                <column name="id_style" not-null="true" />
+                <column name="id_brand" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Lot" table="lot" catalog="v3_inventory">
+        <id name="idLot" type="java.lang.Integer">
+            <column name="id_lot" />
+            <generator class="identity" />
+        </id>
+        <property name="lot" type="string">
+            <column name="lot" length="45" not-null="true" unique="true" />
+        </property>
+        <property name="timeIn" type="timestamp">
+            <column name="time_in" length="19" not-null="true" />
+        </property>
+        <set name="products" table="product" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_lot" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.Product" />
+        </set>
+    </class>
+</hibernate-mapping>

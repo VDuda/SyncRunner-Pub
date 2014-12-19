@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Images" table="images" catalog="v3_inventory">
+        <id name="idImg" type="java.lang.Integer">
+            <column name="id_img" />
+            <generator class="identity" />
+        </id>
+        <property name="thumb" type="string">
+            <column name="thumb" length="160" />
+        </property>
+        <property name="mainImg" type="string">
+            <column name="main_img" length="160" />
+        </property>
+        <property name="img2" type="string">
+            <column name="img2" length="160" />
+        </property>
+        <property name="img3" type="string">
+            <column name="img3" length="160" />
+        </property>
+        <property name="img4" type="string">
+            <column name="img4" length="160" />
+        </property>
+        <property name="img5" type="string">
+            <column name="img5" length="160" />
+        </property>
+        <property name="img6" type="string">
+            <column name="img6" length="160" />
+        </property>
+        <property name="img7" type="string">
+            <column name="img7" length="160" />
+        </property>
+        <property name="img8" type="string">
+            <column name="img8" length="160" />
+        </property>
+        <set name="shoes" table="shoe" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_img" />
+            </key>
+            <one-to-many class="com.v3.products.dto.Shoe" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.LinkedSku" table="linked_sku" catalog="v3_inventory">
+        <id name="idLinkedSku" type="string">
+            <column name="id_linked_sku" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="sku" class="com.v3.products.dto.Sku" fetch="select">
+            <column name="id_style" not-null="true" />
+            <column name="id_brand" not-null="true" />
+        </many-to-one>
+        <property name="linkedSku" type="string">
+            <column name="linked_sku" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

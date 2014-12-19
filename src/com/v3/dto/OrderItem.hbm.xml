@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2014 3:49:27 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.OrderItem" table="order_item" catalog="v3_inventory">
+        <id name="idOrderItem" type="string">
+            <column name="id_order_item" length="45" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="order" class="com.v3.products.dto.Order" fetch="select">
+            <column name="id_order" length="45" not-null="true" />
+        </many-to-one>
+        <property name="sku" type="string">
+            <column name="sku" length="45" not-null="true" />
+        </property>
+        <property name="title" type="string">
+            <column name="title" length="45" not-null="true" />
+        </property>
+        <property name="qtyOrdered" type="string">
+            <column name="qty_ordered" length="45" />
+        </property>
+        <property name="qtyShipped" type="string">
+            <column name="qty_shipped" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

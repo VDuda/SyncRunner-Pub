@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 1, 2014 3:23:41 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.State" table="state" catalog="v3_inventory">
+        <id name="idState" type="java.lang.Integer">
+            <column name="id_state" />
+            <generator class="identity" />
+        </id>
+        <property name="state" type="string">
+            <column name="state_name" length="45" />
+        </property>
+        <property name="abbr" type="string">
+            <column name="state_abbr" length="45" />
+        </property>
+        <set name="cities" table="city" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_state" not-null="true" />
+            </key>
+            <one-to-many class="com.v3.products.dto.City" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,62 @@
+----ADDING INVENTORY SUBMIT FEED
+
+--POST PRODUCT DATA
+
+<?xml version="1.0" encoding="UTF-8"?>
+<AmazonEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="amzn-envelope.xsd">
+	<Header>
+		<DocumentVersion>1.02</DocumentVersion>
+		<MerchantIdentifier>M_BARGAINEXP_1261771</MerchantIdentifier>
+	</Header> 
+<MessageType>Product</MessageType>
+    <PurgeAndReplace>false</PurgeAndReplace>
+    <Message>
+        <MessageID>1</MessageID>
+        <OperationType>Update</OperationType>
+        <Product>
+            <SKU>I-AM-ONE_2</SKU>
+            <StandardProductID>
+                <Type>UPC</Type>
+                <Value>029016133649</Value>
+            </StandardProductID>
+            <Condition>
+                <ConditionType>New</ConditionType>
+            </Condition>
+        </Product>
+    </Message>
+</AmazonEnvelope>
+
+--POST PRODUCT PRICING DATA
+<?xml version="1.0" encoding="UTF-8"?>
+<AmazonEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="amzn-envelope.xsd">
+<Header>
+<DocumentVersion>1.02</DocumentVersion>
+<MerchantIdentifier>M_BARGAINEXP_1261771</MerchantIdentifier>
+</Header>
+<MessageType>Price</MessageType>
+<Message>
+<MessageID>1</MessageID>
+<Price>
+<SKU>I-AM-ONE</SKU>
+<StandardPrice currency="USD">200.45</StandardPrice>
+</Price>
+</Message>
+</AmazonEnvelope>
+
+--POST INVENTORY AVAILABLITY DATA
+<?xml version="1.0" encoding="UTF-8"?>
+<AmazonEnvelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="amzn-envelope.xsd">
+<Header>
+<DocumentVersion>1.02</DocumentVersion>
+<MerchantIdentifier>M_BARGAINEXP_1261771</MerchantIdentifier>
+</Header>
+<MessageType>Inventory</MessageType>
+<Message>
+<MessageID>1</MessageID>
+<OperationType>Update</OperationType>
+<Inventory>
+<SKU>I-AM-ONE</SKU>
+<Quantity>75</Quantity>
+</Inventory>
+</Message>
+</AmazonEnvelope>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 22, 2014 3:49:27 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.v3.products.dto.Descriptions" table="descriptions" catalog="v3_inventory">
+        <id name="idDesc" type="java.lang.Integer">
+            <column name="id_desc" />
+            <generator class="identity" />
+        </id>
+        <property name="description" type="string">
+            <column name="description" length="65535" />
+        </property>
+        <property name="feature1" type="string">
+            <column name="feature1" length="45" />
+        </property>
+        <property name="feature2" type="string">
+            <column name="feature2" length="45" />
+        </property>
+        <property name="feature3" type="string">
+            <column name="feature3" length="45" />
+        </property>
+        <property name="feature4" type="string">
+            <column name="feature4" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
