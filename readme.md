@@ -15,9 +15,6 @@ mvn build all
 ```
 
 
-Will this edit effect anything?
-
-
 Need to create a project projection to track future goals for features.
 
 Using Trello to Track goals for each feature development. Try to check Git Branches for specific features. 
