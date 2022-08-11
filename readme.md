@@ -1,6 +1,6 @@
 -SYNC RUNNER
 
-author - Volodimir Duda
+author - Vlad Duda
 
 Maven based project, will update with valid maven build commands later.
 Requirements should be 
