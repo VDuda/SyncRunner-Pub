@@ -12,7 +12,7 @@
     <dependency>
       <groupId>commons-collections</groupId>
       <artifactId>commons-collections</artifactId>
-      <version>3.1</version>
+      <version>3.2.2</version>
     </dependency>
     <dependency>
       <groupId>dom4j</groupId>
@@ -139,7 +139,7 @@
    	<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>
-		<version>3.6.10.Final</version>
+		<version>4.1.1.Final</version>
 	</dependency>
 	<dependency>
 		<groupId>net.sf.opencsv</groupId>
